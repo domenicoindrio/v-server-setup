@@ -10,7 +10,7 @@ Project nr. 1. during my time at Developer Akademie
 ## Steps:
 
 1. [Step 1: Testing the given login credentials](#step-1-testing-the-given-login-credentials)
-2. [Step 2: Creating an SSH Key pair on main machine](#step-2-creating-an-ssh-key-pair-on-main-machine)
+2. [Step 2: Creating an SSH Key pair on main machine](#step-2-creating-a-ssh-key-pair-on-main-maschine)
 3. [Step 3: Saving the SSH public key on the server (for SSH Key login authentication)](#step-3-saving-the-ssh-public-key-on-the-server-for-ssh-key-login-authentication)
 4. [Step 4: Deactivation of server User-Login Authentication](#step-4-deactivation-of-server-user-login-authentication)
    - [Time for a Double Check!](#time-for-a-double-check)
@@ -267,4 +267,3 @@ For a double check I then tested the ssh connection to Github through this comma
 And obtained following output confirming that the process was done correctly:
 
     Hi my_username! You've successfully authenticated, but GitHub does not provide shell access.
-    

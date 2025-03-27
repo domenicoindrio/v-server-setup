@@ -15,7 +15,7 @@ Project nr. 1. during my time at Developer Akademie
 4. [Step 4: Deactivation of server User-Login Authentication](#step-4-deactivation-of-server-user-login-authentication)
    - [Time for a Double Check!](#time-for-a-double-check)
 5. [Step 5: Nginx Installation](#step-5-nginx-installation)
-6. [Step 6: Creating an alternative configuration and Index Page for Nginx](#step-6-creating-an-alternative-configuration-and-index-page-for-nginx)
+6. [Step 6: Creating an alternative configuration and Index Page for Nginx](#step-6-creating-an-alternative-configuration-and-an-alternate-index-page-for-nginx)
    - [Step 6.1: Creating the alternative nginx config file](#step-61-creating-the-alternative-nginx-config-file)
    - [Step 6.2: Writing the alternate-index.html](#step-62-writing-the-alternate-indexhtml)
    - [Step 6.3: Testing the new config and restarting Nginx services](#step-63-testing-the-new-config-and-restarting-nginx-services)

@@ -22,6 +22,13 @@ Project nr. 1. during my time at Developer Akademie
 7. [Step 7: Setting git/github access from the v-server through SSH keys](#step-7-setting-gitgithub-access-from-the-v-server-through-ssh-keys)
     - [Step 7.1: Creating an SSH key pair on the server and saving it on Github](#step-71-creating-an-ssh-key-pair-on-the-server-and-saving-it-on-github)
 
+## Extra:
+
+1. [Quality of life commands](#quality-of-life-commands)
+2. [Setting up the ssh config file](#setting-up-the-ssh-config-file)
+    - [Setting up the ssh agent](#setting-up-the-ssh-agent)
+3. [Using the Alias function](#using-the-alias-function)
+
 
 ## Introduction
 In this document I am going to document all the steps that i took in order to fulfill my first project at the Developer Akademie, the setup of a virtual server.
@@ -267,3 +274,63 @@ For a double check I then tested the ssh connection to Github through this comma
 And obtained following output confirming that the process was done correctly:
 
     Hi my_username! You've successfully authenticated, but GitHub does not provide shell access.
+
+## Quality of life commands
+
+While writing this document and testing everything described, I found myelf entering the ssh login command several times. Since it's not a short one, I started looking for a way to automate this process. I then found at the end of the module's study material exactly what I was looking for: the configuration of multiple identities in the ssh config file and the `alias` terminal function. After reviewing these, I did logically set up first the configuration file and then created an alias.
+
+## Setting up the ssh config file
+
+First, I searched for the config file in the `~/.ssh/` and, since there was none, I created one:
+
+    nano ~/.ssh/config
+
+In it I wrote a configuration block like this:
+
+    Host server_ip_address
+      User server_username
+      PreferredAuthentications publickey
+      IdentityFile ~/path/to/private_key/key
+
+I saved and closed nano and then ran this command to test if the configuration file was working:
+
+    ssh server_ip_address
+
+I got asked for the key passphrase, entered it and I was successfully connected to the server! 
+However entering the key passphrase every time I connected to the server, started getting slightly annoying, so I searched for a solution.
+
+### Setting up the ssh agent
+
+To solve this, I found that there's the need of two commands involving `eval` and the programm `ssh-add`.
+So I proceeded as following:
+
+    eval $(ssh-agent -s)
+    ssh-add ~/path/to/private/key
+
+After running the `ssh-add ~/path/to/private/key` I was prompted for the passphrase and after entering it, I received this message:
+
+    Identity added: ~/path/to/private/key (Key comment)
+
+For double checking if I did everything right, I also ran following command to check the list of saved identities:
+
+    ssh-add -l 
+
+The corrisponding public key to the private key I added was shown.
+
+For what I understood, the first line set the necessary variables in the shell that let the `ssh-agent` work properly. 
+The second line let the `ssh-add` programm connect with the `ssh-agent` and load the key we indicated.
+
+Afterwards, I tried connecting to the server again and there was no need to input my ssh key passphrase, it connected right away!
+
+## Using the Alias function
+
+I found the alias function a pretty good solution in this case, in order to avoid typing long commands multiple times. So I created an alias to shorten the ssh connection process.
+The syntax was pretty simple, following along the study material I just wrote following command:
+
+    alias vserver="ssh -i /path/to/the/private_key username@server_ipaddress"
+
+Since I had set up earlier the ssh config file, to connect to server using just the command `ssh server_ip_address`, I updated the alias like this:
+
+    alias vserver="ssh server_ip_address"
+
+I ran `vserver` in the terminal and got connected to the server without the need to enter either the server ip address or the key passphrase.

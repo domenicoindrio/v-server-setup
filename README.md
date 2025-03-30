@@ -31,7 +31,7 @@ Project nr. 1. during my time at Developer Akademie
 
 
 ## Introduction
-In this document I am going to document all the steps that i took in order to fulfill my first project at the Developer Akademie, the setup of a virtual server.
+In this document I am going to document all the steps that I took in order to fulfill my first project at the Developer Akademie, the setup of a virtual server.
 
 ## Starting requirements
 In order to start this project i was given the IP Address of a V-Server and the login credentials (username and password) to connect to it.

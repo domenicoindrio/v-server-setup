@@ -289,7 +289,7 @@ $ git config --list
 The entered credentials should be displayed.
 
 ## Step 2: Create an SSH key pair on the server and copy it on Github
-For the creation of the SSH-key pair, follow the same process described in [Step 1](#step-1-create-ssh-key-pair-on-local-host), but do it on the server.
+For the creation of the SSH-key pair, follow the same process described in [Step 1](#step-1-create-an-ssh-key-pair-on-local-host), but do it on the server.
 
 After completion, print the public key's in the terminal:
 
